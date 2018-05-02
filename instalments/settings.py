@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'instalmets.customers.apps.CustomersConfig'
+    'instalments.customers'
 ]
 
 MIDDLEWARE = [
@@ -80,13 +80,9 @@ WSGI_APPLICATION = 'instalments.wsgi.application'
 DATABASES = {
     'default': config(
         'DATABASE_URL', 
-        default='sqlite:///' + BASE_DIR.child('instalments.sqlite3'),
+        default='sqlite:///' + os.path.join(BASE_DIR, 'instalments.sqlite3'),
         cast=db_url)
 }
-{
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

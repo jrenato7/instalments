@@ -17,10 +17,12 @@ class TimeStamp(models.Model):
 
 
 class TimeStampUser(TimeStamp):
-    created_by = models.ForeignKey(User, verbose_name=_('Criado por'), 
-        editable=False, null=True, blank=True)
-    update_by = models.ForeignKey(User, verbose_name=_('Editado por'), 
-        blank=True, null=True, editable=False, related_name='+')
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, 
+        verbose_name=_('Criado por'), editable=False, null=True, 
+        blank=True)
+    update_by = models.ForeignKey(User, on_delete=models.SET_NULL, 
+        verbose_name=_('Editado por'), blank=True, null=True, 
+        editable=False, related_name='+')
 
     class Meta:
         abstract = True
